@@ -4,7 +4,24 @@ Playground project for testing [Kotlin Symbol Processing (KSP)](https://github.c
 
 It generates a class that implements interfaces annotated by `GenerateImpl`.
 
-Result example:
+Declared interface:
+
+```kotlin
+package ru.tetraquark.ksp.test.sample.jvm
+
+import ru.tetraquark.ksp.test.processor.GenerateImpl
+import ru.tetraquark.ksp.test.processor.GenerateRes
+
+@GenerateImpl(generatedClassName = "FeatureStrings")
+interface FeatureStringResources {
+    @GenerateRes
+    val successText: String
+    @GenerateRes(externalName = "error_text")
+    val errorText: String
+}
+```
+
+KSP generation result:
 
 ```kotlin
 package ru.tetraquark.ksp.test.sample.generated
